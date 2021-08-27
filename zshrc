@@ -20,9 +20,9 @@ state_color="\033[38;5;33m"
 if [ "$SPIN" ]; then
   icon=꩜
 else
-  icon=⑆
+  icon=⌘
 fi
-PROMPT=$'%(?.%{$(echo $state_color)%}$icon.%F{red}✗%?)%f $vcs_info_msg_0_%(!.%F{red}#.%{\x1b[1;38;5;33m%}%%)%{\x1b[0m%} '
+PROMPT=$'%(?.%{$(echo $state_color)%}$icon.%F{red}$icon e%?)%f $vcs_info_msg_0_%(!.%F{red}#.%{\x1b[1;38;5;33m%}%%)%{\x1b[0m%} '
 
 typeset -U path
 
