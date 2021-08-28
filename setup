@@ -1,6 +1,6 @@
 #!/bin/bash
 
-this_dir="$(cd "$(dirname "$1")" || exit; pwd)/$(basename "$1")"
+this_dir="$(cd "$(dirname "$1")" || exit; pwd)"
 
 link_file() {
   if [ -f "$2" ] && [ ! -L "$2" ]; then
@@ -8,12 +8,29 @@ link_file() {
     rm "$2"
   fi
   echo Linking "$2"
-  ln -sf "$this_dir$1" "$2"
+  ln -sf "$this_dir/$1" "$2"
 }
 
 # Link dotfiles
-link_file zshrc ~/.zshrc
+
+link_file .zshrc "$HOME/.zshrc"
+
+# GIT CONFIGURATION FILES
+
+link_file .gitconfig "$HOME/.gitconfig"
+link_file .gitconfig.user.shopify "$HOME/.gitconfig.user.shopify"
 
 if [ "$SPIN" ]; then
-  echo "This only runs in spin"
+  link_file .gitconfig.credential.spin "$HOME/.gitconfig.credential"
+else
+  link_file .gitconfig.credential.macos "$HOME/.gitconfig.credential"
+fi
+
+link_file .gitconfig.credential.dev "$HOME/.gitconfig.credential.dev"
+link_file .gitconfig "$HOME/.gitignore"
+
+# Ensure software dependencies
+
+if [ "$(uname)" == "Darwin" ]; then
+  brew bundle --file="$this_dir/Brewfile"
 fi
