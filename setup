@@ -1,6 +1,7 @@
 #!/bin/bash
 
-this_dir="$(cd "$(dirname "$1")" || exit; pwd)"
+DOTFILE_DIR="$(cd "$(dirname "$1")" || exit; pwd)"
+OS=$(uname)
 
 link_file() {
   if [ -f "$2" ] && [ ! -L "$2" ]; then
@@ -8,14 +9,14 @@ link_file() {
     rm "$2"
   fi
   echo Linking "$2"
-  ln -sf "$this_dir/$1" "$2"
+  ln -sf "$DOTFILE_DIR/$1" "$2"
 }
 
-# Link dotfiles
+# Zsh
 
 link_file .zshrc "$HOME/.zshrc"
 
-# GIT CONFIGURATION FILES
+# Git configuration
 
 link_file .gitconfig "$HOME/.gitconfig"
 link_file .gitconfig.user.shopify "$HOME/.gitconfig.user.shopify"
@@ -29,8 +30,8 @@ fi
 link_file .gitconfig.credential.dev "$HOME/.gitconfig.credential.dev"
 link_file .gitconfig "$HOME/.gitignore"
 
-# Ensure software dependencies
+# Software dependencies
 
-if [ "$(uname)" == "Darwin" ]; then
-  brew bundle --file="$this_dir/Brewfile"
+if [ "$OS" == "Darwin" ]; then
+  brew bundle --file="$DOTFILE_DIR/Brewfile"
 fi
