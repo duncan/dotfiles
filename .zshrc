@@ -27,8 +27,8 @@ else
 fi
 
 PROMPT='
-%(?.%F{green}$icon.%F{red}$icon)%f %F{green}${prompt_host}%~%f $vcs_info_msg_0_
-▶︎ '
+%(?.%F{green}$icon.%F{red}$icon)%f %F{yellow}${prompt_host}%~%f $vcs_info_msg_0_
+%F{yellow}▶︎%f '
 
 typeset -U path
 
