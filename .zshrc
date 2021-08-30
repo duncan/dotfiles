@@ -19,10 +19,15 @@ zstyle ':vcs_info:git:*' actionformats $'%F{blue}%b%F{grey}%u%c %F{grey}[%F{yell
 state_color="\033[38;5;33m"
 if [ "$SPIN" ]; then
   icon=꩜
+  prompt_host=$(hostname -s).$SPIN_WORKSPACE
 else
   icon=⌘
+  prompt_host=local
 fi
-PROMPT=$'%(?.%{$(echo $state_color)%}$icon.%F{red}$icon e%?)%f $vcs_info_msg_0_%(!.%F{red}#.%{\x1b[1;38;5;33m%}%%)%{\x1b[0m%} '
+
+PROMPT='
+%(?.%F{green}$icon.%F{red}$icon)%f %F{yellow}${prompt_host}:%B%~%b%f $vcs_info_msg_0_
+▶︎ '
 
 typeset -U path
 
