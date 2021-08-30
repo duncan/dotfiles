@@ -12,6 +12,7 @@ autoload -U compinit && compinit
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 autoload -Uz vcs_info
 precmd_functions+=( vcs_info )
+
 zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:git:*' formats $'%F{blue}%b%F{yellow}%m%{\x1b[0m%} '
 zstyle ':vcs_info:git:*' actionformats $'%F{blue}%b%F{grey}%u%c %F{grey}[%F{yellow}%a %m%F{grey}]%{\x1b[0m%} '
@@ -22,11 +23,11 @@ if [ "$SPIN" ]; then
   prompt_host=$(hostname -s).$SPIN_WORKSPACE
 else
   icon=⌘
-  prompt_host=local
+  prompt_host=''
 fi
 
 PROMPT='
-%(?.%F{green}$icon.%F{red}$icon)%f %F{yellow}${prompt_host}:%B%~%b%f $vcs_info_msg_0_
+%(?.%F{green}$icon.%F{red}$icon)%f %F{green}${prompt_host}%~%f $vcs_info_msg_0_
 ▶︎ '
 
 typeset -U path
