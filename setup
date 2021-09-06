@@ -1,35 +1,3 @@
 #!/bin/bash
 
-DOTFILE_DIR="$(cd "$(dirname "$1")" || exit; pwd)"
-OS=$(uname)
-
-link_file() {
-  if [ -f "$2" ] && [ ! -L "$2" ]; then
-    echo Removing file "$2"
-    rm "$2"
-  fi
-  echo Linking "$2"
-  ln -sf "$DOTFILE_DIR/$1" "$2"
-}
-
-# Zsh
-
-link_file .zshrc "$HOME/.zshrc"
-
-# Git configuration
-
-link_file .gitconfig "$HOME/.gitconfig"
-
-if [ "$SPIN" ]; then
-  link_file .gitconfig.spin "$HOME/.gitconfig.shopify"
-else
-  link_file .gitconfig.dev "$HOME/.gitconfig.shopify"
-fi
-
-link_file .gitconfig "$HOME/.gitignore"
-
-# Software dependencies
-
-if [ "$OS" == "Darwin" ]; then
-  brew bundle --file="$DOTFILE_DIR/Brewfile"
-fi
+(cd "$(dirname "$1")" || exit; rake)

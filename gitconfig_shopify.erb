@@ -1,9 +1,6 @@
-[credential]
-    helper = 
-    helper = store --file /opt/dev/var/private/git_credential_store
-
 [user]
     email = duncan@shopify.com
+<% if Dir.exist?('/opt/dev') %>
     signingkey = 0849B2FD25C738D21D71C0B8C27D5E57F9F80433
 
 [gpg]
@@ -11,3 +8,4 @@
 
 [commit]
     gpgSign = true
+<% end %>
