@@ -19,15 +19,13 @@ link_file .zshrc "$HOME/.zshrc"
 # Git configuration
 
 link_file .gitconfig "$HOME/.gitconfig"
-link_file .gitconfig.user.shopify "$HOME/.gitconfig.user.shopify"
 
 if [ "$SPIN" ]; then
-  link_file .gitconfig.credential.spin "$HOME/.gitconfig.credential"
+  link_file .gitconfig.spin "$HOME/.gitconfig.shopify"
 else
-  link_file .gitconfig.credential.macos "$HOME/.gitconfig.credential"
+  link_file .gitconfig.dev "$HOME/.gitconfig.shopify"
 fi
 
-link_file .gitconfig.credential.dev "$HOME/.gitconfig.credential.dev"
 link_file .gitconfig "$HOME/.gitignore"
 
 # Software dependencies

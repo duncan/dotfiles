@@ -29,13 +29,11 @@
     email = duncandavidson@me.com
     name = Duncan Davidson 
 
-[include]
-    path = .gitconfig.credential
+[credential]
+    helper = osxkeychain
 
 [includeIf "gitdir:~/src/github.com/Shopify/"]
-    path = .gitconfig.user.shopify
+    path = .gitconfig.shopify
 
 [includeIf "gitdir:~/src/github.com/shopify/"]
-    path = .gitconfig.user.shopify
-
-
+    path = .gitconfig.shopify

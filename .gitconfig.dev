@@ -1,3 +1,7 @@
+[credential]
+    helper = 
+    helper = store --file /opt/dev/var/private/git_credential_store
+
 [user]
     email = duncan@shopify.com
     signingkey = 0849B2FD25C738D21D71C0B8C27D5E57F9F80433
