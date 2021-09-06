@@ -19,7 +19,7 @@ zstyle ':vcs_info:git:*' actionformats $'%F{blue}%b%F{grey}%u%c %F{grey}[%F{yell
 
 state_color="\033[38;5;33m"
 
-<% if ENV["SPIN"] == "TRUE" %>
+<% if ENV["SPIN"] %>
 icon=꩜
 <% else %> 
 icon=⌘
@@ -49,7 +49,7 @@ else
   if test -d /opt/homebrew/share/chruby; then 
     source /opt/homebrew/share/chruby/chruby.sh
     source /opt/homebrew/share/chruby/auto.sh
-  else 
+  elsif test -d /usr/local/share/chruby/chruby; then
     source /usr/local/share/chruby/chruby.sh
     source /usr/local/share/chruby/auto.sh
   fi
