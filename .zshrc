@@ -47,7 +47,7 @@ else
   if test -d /opt/homebrew/share/chruby; then 
     source /opt/homebrew/share/chruby/chruby.sh
     source /opt/homebrew/share/chruby/auto.sh
-  else 
+  elif test -d /usr/local/share/chruby/chruby; then
     source /usr/local/share/chruby/chruby.sh
     source /usr/local/share/chruby/auto.sh
   fi
