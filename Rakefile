@@ -4,7 +4,7 @@ task :default => [:git, :zsh, :brew]
 
 task :git do
   sh "erb gitconfig.erb > ~/.gitconfig"
-  sh "erb gitconfig_shopify.erb > ~/.gitconfig_shopify"
+  sh "erb gitconfig_shopify.erb > ~/.gitconfig_shopify" if ENV['SHOPIFY']
 end
 
 task :zsh do 
