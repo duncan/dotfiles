@@ -14,6 +14,10 @@ task :git do
   end
 end
 
+task :ruby do
+  cp "ruby-version", "#{Dir.home}/.ruby-version"
+end
+
 task :zsh do 
   erb "zshrc.erb", "#{Dir.home}/.zshrc"
 end
