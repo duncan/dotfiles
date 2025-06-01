@@ -1,0 +1,44 @@
+{
+  "edit_predictions": {
+    "mode": "subtle",
+    "copilot": {
+      "proxy": null,
+      "proxy_no_verify": null
+    },
+    "enabled_in_text_threads": false
+  },
+  "features": {
+    "edit_prediction_provider": "zed"
+  },
+  "agent": {
+    "always_allow_tool_actions": true,
+    "default_profile": "write",
+    "inline_assistant_model": {
+      "provider": "anthropic",
+      "model": "claude-3-7-sonnet-latest"
+    },
+    "default_model": {
+      "provider": "zed.dev",
+      "model": "claude-3-7-sonnet-latest"
+    },
+    "version": "2"
+  },
+  "languages": {
+    "Markdown": {
+      "show_edit_predictions": false,
+      "show_copilot_suggestions": false,
+      "list_indent_size": 2,
+      "soft_wrap": "editor_width",
+      "wrap_prose": true
+    }
+  },
+  "theme": "Ayu Mirage",
+  "base_keymap": "VSCode",
+  "buffer_font_size": 13,
+  "format_on_save": "on",
+  "terminal": {
+    "env": {
+      "PATH": "/Users/duncan/.flox/run/aarch64-darwin.default.run/bin:$PATH"
+    }
+  }
+}
