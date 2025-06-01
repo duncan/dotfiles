@@ -5,19 +5,14 @@ root = true
 
 [*]
 indent_style = space
+indent_size = 2
 end_of_line = lf
 charset = utf-8
-trim_trailing_whitespace = false
-insert_final_newline = false
+trim_trailing_whitespace = true
+insert_final_newline = true
 
-[*.rb]
+[*.{rb,yml,yaml,js,ts,tsx,jsx,json,md,html,css,scss,go}]
 indent_size = 2
 
-[*.yml]
-indent_size = 2
-
-[*.js]
-indent_size = 2
-
-[*.ts]
-indent_size = 2
+[*.{py,sh}]
+indent_size = 4

@@ -1,4 +1,4 @@
-# duncan does dotfiles
+# Duncan’s Dotfiles
 
 Dotfiles are how you personalize a system. These are mine. They’ve changed a lot
 over the years. They’ll probably keep changing. That's the way of it all, innit?
