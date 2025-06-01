@@ -24,7 +24,9 @@ cd $HOME/src/dotfiles
 # Since we use Flox (a Nix wrapper)
 
 if [ ! -f /usr/local/bin/flox ] ; then
-  curl -L https://flox.dev/downloads/osx/flox.aarch64-darwin.pkg | sudo installer -pkg /dev/stdin -target /
+  curl -L https://flox.dev/downloads/osx/flox.aarch64-darwin.pkg -o /tmp/flox.pkg
+  sudo installer -pkg /tmp/flox.pkg -target /
+  rm /tmp/flox.pkg
   if  [ -f /usr/local/bin/flox ] ; then
     echo "✅ Flox installed successfully!"
   else
