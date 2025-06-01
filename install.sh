@@ -1,5 +1,15 @@
 #!/bin/bash
 
+# OS DETECTION
+#
+OS="$(uname -s)"
+case "${OS}" in
+  Linux*)     MACHINE=Linux;;
+  Darwin*)    MACHINE=Mac;;
+  *)          MACHINE="UNKNOWN:${OS}"
+esac
+echo "ℹ️ Machine type: $MACHINE"
+
 # BOOTSTRAP
 
 if [ -d $HOME/src/dotfiles ] ; then
