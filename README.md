@@ -3,10 +3,11 @@
 Dotfiles are how you personalize a system. These are mine. They’ve changed a lot
 over the years. They’ll probably keep changing. That's the way of it all, innit?
 
-One of the biggest changes recently is the move from Homebrew to
-[Flox](https://flox.dev). This is thanks to my time at Shopify where [Tobi
-Lütke](https://github.com/tobi) and Burke Libbey turned me onto Nix and it’s
-ability to maintain different tooling configs on a per-project basis.
+One of the biggest changes recently is the move from [Homebrew](https://brew.sh)
+to [Flox](https://flox.dev). This is thanks to my time at
+[Shopify](https://shopify.com) where [Tobi Lütke](https://github.com/tobi) and
+[Burke Libbey](https://github.com/burke) turned me onto [Nix](https://nixos.org)
+and it’s ability to maintain different tooling configs on a per-project basis.
 
 # Install
 
