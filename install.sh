@@ -12,7 +12,7 @@ else
     echo "✅ Dotfiles repo cloned!"
   else
     echo "⛔️ Dotfiles repo wasn’t cloned successfully!"
-    exit -1
+    exit 1
   fi
   # Let's execute and exit the status
 fi
@@ -29,7 +29,7 @@ if [ ! -f /usr/local/bin/flox ] ; then
     echo "✅ Flox installed successfully!"
   else
     echo "⛔️ Flox didn’t install successfully!"
-    exit -1
+    exit 1
   fi
 else
   echo "✅ Flox is already installed!"
