@@ -30,3 +30,11 @@ and pipe the setup script right off of GitHub and into your shell:
 ```
 curl https://raw.githubusercontent.com/duncan/dotfiles/main/install.sh | bash
 ```
+
+# Paving over a machine
+
+Time to give up a machine and give it to somebody else? Do this:
+
+1. Go into System Settings
+2. Click General in the sidebar
+3. Click Transfer or Reset
