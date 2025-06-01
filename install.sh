@@ -7,7 +7,7 @@ if [ -d $HOME/src/dotfiles ] ; then
 else
   echo "Starting from bare metal, I see. Daring! Let’s go!"
   mkdir -p $HOME/src
-  git clone https://github.com/duncan/dotfiles
+  git clone https://github.com/duncan/dotfiles $HOME/src/dotfiles
   if [ -d $HOME/src/dotfiles ] ; then
     echo "✅ Dotfiles repo cloned!"
   else
