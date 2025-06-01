@@ -37,6 +37,20 @@ else
   echo "✅ Flox is already installed!"
 fi
 
+# Check if we're using duncan/default environment
+if flox envs 2>/dev/null | grep -q "default.*$HOME"; then
+  echo "✅ Using default flox environment!"
+else
+  echo "📦 Pulling default environment from FloxHub..."
+  flox pull duncan/default 2>/dev/null
+  if flox envs 2>/dev/null | grep -q "default.*$HOME"; then
+    echo "✅ Default environment pulled successfully!"
+  else
+    echo "⛔️ Failed to pull default environment!"
+    exit 1
+  fi
+fi
+
 # DOTFILES
 #
 # Ok, this is the pretty boring part. Just link things up and we’re done.
