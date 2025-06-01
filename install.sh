@@ -35,24 +35,13 @@ else
   echo "✅ Flox is already installed!"
 fi
 
-# GIT
-#
-# I use `git config` instead of a dotfile here because my old work setup blasted
-# stuff into git config as well. Maybe I’ll change it back sometime.
-
-sh "git config --global user.name \"Duncan Davidson\""
-sh "git config --global credential.helper osxkeychain"
-sh "git config --global user.email \"duncandavidson@me.com\""
-sh "git config --global init.defaultBranch main"
-sh "git config --global pull.rebase false"
-echo "✅ Git configured!"
-
 # DOTFILES
 #
 # Ok, this is the pretty boring part. Just link things up and we’re done.
 
 ln -nfs `realpath editorconfig` $HOME/.editorconfig
 ln -nfs `realpath zshrc` $HOME/.zshrc
+ln -nfs `realpath gitconfig` $HOME/.gitconfig
 mkdir -p $HOME/.config/zed
 ln -nfs `realpath zed.settings.json` $HOME/.config/zed/settings.json
 

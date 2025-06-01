@@ -1,0 +1,9 @@
+[user]
+    name = Duncan Davidson
+    email = duncandavidson@me.com
+[credential]
+    helper = osxkeychain
+[init]
+    defaultBranch = main
+[pull]
+    rebase = false
