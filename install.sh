@@ -12,22 +12,26 @@ echo "ℹ️ Machine type: $MACHINE"
 
 # BOOTSTRAP
 
-if [ -d $HOME/src/dotfiles ] ; then
-  echo "✅ Dotfiles repo"
-else
-  echo "Starting from bare metal, I see. Daring! Let’s go!"
-  mkdir -p $HOME/src
-  git clone https://github.com/duncan/dotfiles $HOME/src/dotfiles
-  if [ -d $HOME/src/dotfiles ] ; then
-    echo "✅ Dotfiles repo cloned!"
-  else
-    echo "⛔️ Dotfiles repo wasn’t cloned successfully!"
-    exit 1
-  fi
-  # Let's execute and exit the status
-fi
+# TODO: Replace this with detect if the script is being run from STDIN or not.
 
-cd $HOME/src/dotfiles
+# if [ -d $HOME/src/dotfiles ] ; then
+#   echo "✅ Dotfiles repo"
+# else
+#   echo "Starting from bare metal, I see. Daring! Let’s go!"
+#   mkdir -p $HOME/src
+#   git clone https://github.com/duncan/dotfiles $HOME/src/dotfiles
+#   if [ -d $HOME/src/dotfiles ] ; then
+#     echo "✅ Dotfiles repo cloned!"
+#   else
+#     echo "⛔️ Dotfiles repo wasn’t cloned successfully!"
+#     exit 1
+#   fi
+#   # Let's execute and exit the status
+# fi
+
+# TODO: Figure out if we’re being executed from STDIN
+
+cd `dirname $0`
 
 # FLOX
 #
@@ -86,6 +90,8 @@ fi
 ln -nfs `realpath editorconfig` $HOME/.editorconfig
 ln -nfs `realpath zshrc` $HOME/.zshrc
 ln -nfs `realpath gitconfig` $HOME/.gitconfig
+mkdir -p $HOME/.config
+ln -nfs `realpath starship.toml` $HOME/.config/starship.toml
 mkdir -p $HOME/.config/zed
 ln -nfs `realpath zed.settings.json` $HOME/.config/zed/settings.json
 
