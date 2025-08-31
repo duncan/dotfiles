@@ -14,13 +14,13 @@
     "always_allow_tool_actions": false,
     "default_profile": "write",
     "inline_assistant_model": {
-      "provider": "anthropic",
-      "model": "claude-3-7-sonnet-latest"
+      "provider": "zed.dev",
+      "model": "claude-opus-4-1"
     },
     "default_model": {
       "provider": "zed.dev",
       "model": "claude-opus-4-1"
-    },
+    }
   },
   "languages": {
     "Markdown": {
@@ -36,5 +36,6 @@
     "env": {
       "PATH": "/Users/duncan/.flox/run/aarch64-darwin.default.run/bin:$PATH"
     }
-  }
+  },
+  "file_scan_exclusions": ["node_modules", ".flox", "dist", "build", ".cache"]
 }
