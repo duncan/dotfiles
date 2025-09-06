@@ -11,7 +11,7 @@
     "edit_prediction_provider": "zed"
   },
   "agent": {
-    "always_allow_tool_actions": false,
+    "always_allow_tool_actions": true,
     "default_profile": "write",
     "inline_assistant_model": {
       "provider": "zed.dev",
@@ -32,10 +32,17 @@
   "base_keymap": "VSCode",
   "buffer_font_size": 13,
   "format_on_save": "on",
-  "terminal": {
-    "env": {
-      "PATH": "/Users/duncan/.flox/run/aarch64-darwin.default.run/bin:$PATH"
-    }
-  },
-  "file_scan_exclusions": ["node_modules", ".flox", "dist", "build", ".cache"]
+  "file_scan_exclusions": [
+    "**/node_modules",
+    ".DS_Store",
+    ".git",
+    ".wrangler",
+    ".zed",
+    ".claude",
+    ".flox",
+    "dist",
+    "build",
+    ".cache",
+    "nix"
+  ]
 }
