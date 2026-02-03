@@ -44,7 +44,7 @@ require_cmd curl
 
 # TODO: Figure out if we’re being executed from STDIN
 
-cd `dirname $0`
+cd "$(dirname "$0")"
 
 # FLOX
 #
@@ -142,13 +142,13 @@ fi
 # Ok, this is the pretty boring part. Just link things up and we’re done.
 
 require_cmd realpath
-ln -nfs `realpath editorconfig` $HOME/.editorconfig
-ln -nfs `realpath zshrc` $HOME/.zshrc
-ln -nfs `realpath gitconfig` $HOME/.gitconfig
-mkdir -p $HOME/.config
-ln -nfs `realpath starship.toml` $HOME/.config/starship.toml
-mkdir -p $HOME/.config/zed
-ln -nfs `realpath zed.settings.json` $HOME/.config/zed/settings.json
+ln -nfs "$(realpath editorconfig)" "$HOME/.editorconfig"
+ln -nfs "$(realpath zshrc)" "$HOME/.zshrc"
+ln -nfs "$(realpath gitconfig)" "$HOME/.gitconfig"
+mkdir -p "$HOME/.config"
+ln -nfs "$(realpath starship.toml)" "$HOME/.config/starship.toml"
+mkdir -p "$HOME/.config/zed"
+ln -nfs "$(realpath zed.settings.json)" "$HOME/.config/zed/settings.json"
 
 # SAY GOODBYE
 
