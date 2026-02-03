@@ -183,25 +183,6 @@ else
   fi
 fi
 
-# CLAUDE
-#
-# Make sure the robot is installed. I wish this was in my Flox default
-# environment tho. On the other hand, claude is rapidly evolving so 🤷
-
-require_cmd npm
-NPM_GLOBAL_BIN="$(npm config get prefix)/bin"
-if [ -f "$NPM_GLOBAL_BIN/claude" ]; then
-  echo "✅ Claude code"
-else
-  npm install -g @anthropic-ai/claude-code
-  if [ -f "$NPM_GLOBAL_BIN/claude" ]; then
-    echo "✅ Claude code installed"
-  else
-    echo "⛔️ Failed to install claude code!"
-    exit 1
-  fi
-fi
-
 # DOTFILES
 #
 # Ok, this is the pretty boring part. Just link things up and we’re done.
