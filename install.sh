@@ -37,8 +37,32 @@ cd `dirname $0`
 #
 # Since we use Flox (a Nix wrapper)
 
+ARCH="$(uname -m)"
+FLOX_PKG_URL=""
+
+case "${MACHINE}" in
+  Mac)
+    case "${ARCH}" in
+      arm64)  FLOX_PKG_URL="https://flox.dev/downloads/osx/flox.aarch64-darwin.pkg" ;;
+      x86_64) FLOX_PKG_URL="" ;;
+      *)      FLOX_PKG_URL="" ;;
+    esac
+    ;;
+  Linux)
+    FLOX_PKG_URL=""
+    ;;
+  *)
+    FLOX_PKG_URL=""
+    ;;
+esac
+
 if [ ! -f /usr/local/bin/flox ] ; then
-  curl -L https://flox.dev/downloads/osx/flox.aarch64-darwin.pkg -o /tmp/flox.pkg
+  if [ -z "${FLOX_PKG_URL}" ] ; then
+    echo "⛔️ No Flox installer configured for ${MACHINE}/${ARCH}."
+    echo "    Please install Flox manually for your platform, then re-run ./install.sh"
+    exit 1
+  fi
+  curl -L "${FLOX_PKG_URL}" -o /tmp/flox.pkg
   sudo installer -pkg /tmp/flox.pkg -target /
   rm /tmp/flox.pkg
   if  [ -f /usr/local/bin/flox ] ; then
