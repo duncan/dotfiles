@@ -63,6 +63,21 @@ if [ ! -f /usr/local/bin/flox ] ; then
     exit 1
   fi
   curl -L "${FLOX_PKG_URL}" -o /tmp/flox.pkg
+  if [ "${MACHINE}" = "Mac" ] ; then
+    if ! pkgutil --check-signature /tmp/flox.pkg >/tmp/flox.pkg.sig 2>&1 ; then
+      echo "⛔️ Flox pkg signature check failed!"
+      cat /tmp/flox.pkg.sig
+      rm /tmp/flox.pkg /tmp/flox.pkg.sig
+      exit 1
+    fi
+    if ! spctl -a -vv -t install /tmp/flox.pkg >/tmp/flox.pkg.spctl 2>&1 ; then
+      echo "⛔️ Flox pkg notarization check failed!"
+      cat /tmp/flox.pkg.spctl
+      rm /tmp/flox.pkg /tmp/flox.pkg.sig /tmp/flox.pkg.spctl
+      exit 1
+    fi
+    rm /tmp/flox.pkg.sig /tmp/flox.pkg.spctl
+  fi
   sudo installer -pkg /tmp/flox.pkg -target /
   rm /tmp/flox.pkg
   if  [ -f /usr/local/bin/flox ] ; then
