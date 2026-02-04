@@ -9,6 +9,11 @@ to [Flox](https://flox.dev). This is thanks to my time at
 [Burke Libbey](https://github.com/burke) turned me onto [Nix](https://nixos.org)
 and it’s ability to maintain different tooling configs on a per-project basis.
 
+# Target operating systems
+
+- macOS 26
+- Ubuntu 24
+
 # Install
 
 I clone my dotfiles repo into `~/src` because it’s under source code management
