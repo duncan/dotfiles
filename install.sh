@@ -190,6 +190,7 @@ fi
 require_cmd realpath
 ln -nfs "$(realpath editorconfig)" "$HOME/.editorconfig"
 ln -nfs "$(realpath zshrc)" "$HOME/.zshrc"
+ln -nfs "$(realpath zprofile)" "$HOME/.zprofile"
 ln -nfs "$(realpath gitconfig)" "$HOME/.gitconfig"
 mkdir -p "$HOME/.config"
 ln -nfs "$(realpath starship.toml)" "$HOME/.config/starship.toml"

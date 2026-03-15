@@ -1,5 +1,11 @@
 {
+  "agent_servers": {
+    "claude-acp": {
+      "type": "registry"
+    }
+  },
   "edit_predictions": {
+    "provider": "zed",
     "mode": "subtle",
     "copilot": {
       "proxy": null,
@@ -7,19 +13,20 @@
     },
     "enabled_in_text_threads": false
   },
-  "features": {
-    "edit_prediction_provider": "zed"
-  },
   "agent": {
-    "always_allow_tool_actions": true,
+    "tool_permissions": {
+      "default": "allow"
+    },
     "default_profile": "write",
     "inline_assistant_model": {
       "provider": "zed.dev",
       "model": "claude-opus-4-1"
     },
     "default_model": {
+      "effort": "high",
+      "enable_thinking": true,
       "provider": "zed.dev",
-      "model": "claude-opus-4-1"
+      "model": "claude-opus-4-6"
     }
   },
   "languages": {
