@@ -1,3 +1,3 @@
-if command -v flox >/dev/null 2>&1 ; then
-  eval "$(flox activate -d ~ -m run)"
+if [ -x /opt/homebrew/bin/brew ] ; then
+  eval "$(/opt/homebrew/bin/brew shellenv zsh)"
 fi

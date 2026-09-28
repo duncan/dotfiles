@@ -1,33 +1,46 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
 {
-  "agent_servers": {
-    "claude-acp": {
-      "type": "registry"
-    }
-  },
-  "edit_predictions": {
-    "provider": "zed",
-    "mode": "subtle",
-    "copilot": {
-      "proxy": null,
-      "proxy_no_verify": null
-    },
-    "enabled_in_text_threads": false
-  },
   "agent": {
     "tool_permissions": {
-      "default": "allow"
-    },
-    "default_profile": "write",
-    "inline_assistant_model": {
-      "provider": "zed.dev",
-      "model": "claude-opus-4-1"
+      "tools": {
+        "terminal": {
+          "always_allow": [
+            {
+              "pattern": "^git\\b"
+            }
+          ]
+        }
+      }
     },
     "default_model": {
-      "effort": "high",
-      "enable_thinking": true,
       "provider": "zed.dev",
-      "model": "claude-opus-4-6"
-    }
+      "model": "claude-opus-5-5",
+      "enable_thinking": true,
+      "effort": "medium"
+    },
+    "favorite_models": [
+      {
+        "provider": "zed.dev",
+        "model": "claude-opus-5-5",
+        "enable_thinking": true,
+        "effort": "medium"
+      }
+    ],
+    "model_parameters": []
+  },
+  "ui_font_size": 16,
+  "buffer_font_size": 15,
+  "theme": {
+    "mode": "system",
+    "light": "One Light",
+    "dark": "One Dark"
   },
   "languages": {
     "Markdown": {
@@ -35,21 +48,15 @@
       "soft_wrap": "editor_width"
     }
   },
-  "theme": "Ayu Mirage",
-  "base_keymap": "VSCode",
-  "buffer_font_size": 13,
-  "format_on_save": "on",
   "file_scan_exclusions": [
+    "**/.git",
+    "**/.DS_Store",
     "**/node_modules",
-    ".DS_Store",
-    ".git",
-    ".wrangler",
-    ".zed",
-    ".claude",
-    ".flox",
-    "dist",
-    "build",
-    ".cache",
-    "nix"
+    "**/.wrangler",
+    "**/.zed",
+    "**/.claude",
+    "**/dist",
+    "**/build",
+    "**/.cache"
   ]
 }

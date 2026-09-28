@@ -1,13 +1,6 @@
 # Duncan’s Dotfiles
 
-Dotfiles are how you personalize a system. These are mine. They’ve changed a lot
-over the years. They’ll probably keep changing. That's the way of it all, innit?
-
-One of the biggest changes recently is the move from [Homebrew](https://brew.sh)
-to [Flox](https://flox.dev). This is thanks to my time at
-[Shopify](https://shopify.com) where [Tobi Lütke](https://github.com/tobi) and
-[Burke Libbey](https://github.com/burke) turned me onto [Nix](https://nixos.org)
-and it’s ability to maintain different tooling configs on a per-project basis.
+Dotfiles are how you personalize a system. These are mine. They’ve changed a lot over the years. They’ll probably keep changing. That's the way of it all, innit? But, over time, mine get simpler and simpler. That hopefully is also the way of it.
 
 # Target operating systems
 
@@ -16,30 +9,13 @@ and it’s ability to maintain different tooling configs on a per-project basis.
 
 # Install
 
-I clone my dotfiles repo into `~/src` because it’s under source code management
-like everything else. Others clone their dotfiles into `~/.dotfiles`. Whatever
-floats your boat.
+I clone my dotfiles repo into `~/Source` or `~/src` depending on if I’m on a Mac or Linux system. I dunno why. Just cuz. You do what floats your boat.
 
-The “safe” way to do this is:
+To install:
 
 ```
-mkdir -p ~/src
-git clone https://github.com/duncan/dotfiles ~/src/dotfiles
-cd ~/src/dotfiles
+mkdir -p ~/Source
+git clone https://github.com/duncan/dotfiles ~/Source/dotfiles
+cd ~/Source/dotfiles
 ./install.sh
 ```
-
-Or, you can go full out and do that thing that we really don’t suggest folks do
-and pipe the setup script right off of GitHub and into your shell:
-
-```
-curl https://raw.githubusercontent.com/duncan/dotfiles/main/install.sh | bash
-```
-
-# Paving over a machine
-
-Time to give up a machine and give it to somebody else? Do this:
-
-1. Go into System Settings
-2. Click General in the sidebar
-3. Click Transfer or Reset
