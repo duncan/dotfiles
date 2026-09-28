@@ -1,0 +1,5 @@
+brew "gh"
+brew "git-lfs"
+brew "node"
+brew "pnpm"
+brew "ripgrep"

@@ -11,8 +11,6 @@ charset = utf-8
 trim_trailing_whitespace = true
 insert_final_newline = true
 
-[*.{rb,yml,yaml,js,ts,tsx,jsx,json,md,html,css,scss,go}]
-indent_size = 2
 
 [*.{py,sh}]
 indent_size = 4
