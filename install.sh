@@ -12,6 +12,15 @@ else
   echo "⚠️  Homebrew not found; skipping Brewfile."
 fi
 
+# RUST
+#
+# Homebrew provides rustup; rustup manages the toolchains themselves.
+
+RUSTUP=/opt/homebrew/opt/rustup/bin/rustup
+if [ -x "$RUSTUP" ] && ! "$RUSTUP" default >/dev/null 2>&1 ; then
+  "$RUSTUP" default stable
+fi
+
 # LINKS
 #
 # Existing files that aren't already links get moved aside rather than
