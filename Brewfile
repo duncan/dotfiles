@@ -1,3 +1,4 @@
+brew "git"
 brew "gh"
 brew "git-lfs"
 brew "node"
