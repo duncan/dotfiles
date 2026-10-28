@@ -1,6 +1,5 @@
 brew "git"
 brew "gh"
-brew "git"
 brew "git-lfs"
 brew "node"
 brew "pnpm"
