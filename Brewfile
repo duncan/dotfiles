@@ -5,3 +5,5 @@ brew "node"
 brew "pnpm"
 brew "ripgrep"
 brew "rustup"
+
+cask "codex"
