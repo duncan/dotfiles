@@ -1,6 +1,7 @@
 #!/bin/bash
 
 set -e
+set -o pipefail
 
 DOTFILES="$(cd "$(dirname "$0")" && pwd -P)"
 
@@ -53,6 +54,23 @@ esac
 if [ -x "${RUSTUP:-}" ] && ! "$RUSTUP" default >/dev/null 2>&1 ; then
   "$RUSTUP" default stable
 fi
+
+# VENDOR INSTALLERS
+#
+# For tools whose vendors recommend their own installer over a package
+# manager. These work on both macOS and Linux and keep themselves up to date.
+
+install_if_missing() {
+  local name="$1" bin="$2" url="$3" shell="$4"
+
+  if [ ! -x "$bin" ] ; then
+    echo "📥 $name not found; installing it."
+    curl -fsSL "$url" | "$shell"
+  fi
+}
+
+install_if_missing "Claude Code" "$HOME/.local/bin/claude" https://claude.ai/install.sh bash
+install_if_missing "Codex" "$HOME/.local/bin/codex" https://chatgpt.com/codex/install.sh sh
 
 # LINKS
 #
