@@ -4,20 +4,53 @@ set -e
 
 DOTFILES="$(cd "$(dirname "$0")" && pwd -P)"
 
-# HOMEBREW
-
-if [ -x /opt/homebrew/bin/brew ] ; then
-  /opt/homebrew/bin/brew bundle --file="$DOTFILES/Brewfile"
-else
-  echo "⚠️  Homebrew not found; skipping Brewfile."
-fi
-
-# RUST
+# PACKAGES
 #
-# Homebrew provides rustup; rustup manages the toolchains themselves.
+# Homebrew on macOS, apt on Ubuntu. Keep the two lists in step with each
+# other. Either way, rustup comes from the package manager and manages the
+# toolchains itself.
 
-RUSTUP=/opt/homebrew/opt/rustup/bin/rustup
-if [ -x "$RUSTUP" ] && ! "$RUSTUP" default >/dev/null 2>&1 ; then
+case "$(uname -s)" in
+  Darwin)
+    if [ ! -x /opt/homebrew/bin/brew ] ; then
+      echo "🍺 Homebrew not found; installing it."
+      /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    fi
+
+    /opt/homebrew/bin/brew bundle --file="$DOTFILES/Brewfile"
+    RUSTUP=/opt/homebrew/opt/rustup/bin/rustup
+    ;;
+
+  Linux)
+    sudo apt-get update
+    sudo apt-get install -y curl
+
+    # Ubuntu's own nodejs lags well behind; NodeSource tracks the current
+    # release, like Homebrew does. Its nodejs package includes npm.
+    if [ ! -f /etc/apt/sources.list.d/nodesource.list ] ; then
+      curl -fsSL https://deb.nodesource.com/setup_current.x | sudo -E bash -
+    fi
+
+    sudo apt-get install -y zsh git gh git-lfs nodejs ripgrep rustup
+
+    if ! command -v pnpm >/dev/null 2>&1 ; then
+      sudo npm install -g pnpm
+    fi
+    RUSTUP=/usr/bin/rustup
+
+    ZSH="$(command -v zsh)"
+    if [ "$(getent passwd "$USER" | cut -d: -f7)" != "$ZSH" ] ; then
+      chsh -s "$ZSH"
+      echo "🐚 Default shell is now zsh; log out and back in to pick it up."
+    fi
+    ;;
+
+  *)
+    echo "⚠️  Unsupported OS $(uname -s); skipping packages."
+    ;;
+esac
+
+if [ -x "${RUSTUP:-}" ] && ! "$RUSTUP" default >/dev/null 2>&1 ; then
   "$RUSTUP" default stable
 fi
 
