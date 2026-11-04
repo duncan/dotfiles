@@ -77,7 +77,11 @@ link zshrc "$HOME/.zshrc"
 link zprofile "$HOME/.zprofile"
 link gitconfig "$HOME/.gitconfig"
 link gitignore "$HOME/.config/git/ignore"
-link zed.settings.json "$HOME/.config/zed/settings.json"
+
+# Desktop Zed only runs on the Mac for now.
+if [ "$(uname -s)" = "Darwin" ] ; then
+  link zed.settings.json "$HOME/.config/zed/settings.json"
+fi
 
 # SAY GOODBYE
 
